@@ -1,0 +1,740 @@
+/* ================================================================
+ * 📱 ZAIN DELIVERY - Responsive.css
+ * ================================================================
+ * دعم كامل لجميع الأجهزة:
+ *   🍎 iPhone / iPad
+ *   🤖 Android
+ *   💻 Windows / Mac / Linux
+ *   📱 Tablets
+ * ================================================================
+ * الإصدار: v1.0.0
+ * التاريخ: 2026-09-23
+ * ================================================================ */
+
+/* ================================================================
+ * 1. إصلاحات أساسية لجميع الأجهزة
+ * ================================================================ */
+
+* {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* السماح بالتحديد في حقول الإدخال */
+input,
+textarea,
+[contenteditable="true"],
+.selectable {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    min-height: 100vh;
+    min-height: 100dvh;
+    min-height: -webkit-fill-available;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+    overscroll-behavior-y: none;
+    position: relative;
+    width: 100%;
+}
+
+/* ================================================================
+ * 2. دعم iPhone Notch / Dynamic Island
+ * ================================================================ */
+
+@supports (padding: max(0px)) {
+    body {
+        padding-left: env(safe-area-inset-left, 0);
+        padding-right: env(safe-area-inset-right, 0);
+    }
+    
+    /* جميع الهيدرات */
+    .header,
+    .main-header,
+    .admin-header,
+    .store-header,
+    .driver-header,
+    .page-header {
+        padding-top: max(12px, env(safe-area-inset-top, 0));
+        padding-left: max(20px, env(safe-area-inset-left, 0));
+        padding-right: max(20px, env(safe-area-inset-right, 0));
+    }
+    
+    /* الأزرار العائمة */
+    .cart-btn,
+    .fab,
+    .floating-btn,
+    .floating-action {
+        bottom: max(25px, calc(env(safe-area-inset-bottom, 0) + 15px));
+        left: max(25px, calc(env(safe-area-inset-left, 0) + 15px));
+    }
+    
+    /* الفوتر */
+    footer,
+    .footer,
+    .cart-footer,
+    .bottom-nav {
+        padding-bottom: max(15px, calc(env(safe-area-inset-bottom, 0) + 15px));
+    }
+    
+    /* القوائم المثبتة في الأسفل */
+    .bottom-nav,
+    .tab-bar,
+    .bottom-bar {
+        padding-bottom: env(safe-area-inset-bottom, 0);
+    }
+}
+
+/* ================================================================
+ * 3. أزرار محسّنة للمس
+ * ================================================================ */
+
+button,
+a,
+.clickable,
+.mini-btn,
+.action-btn,
+.header-btn,
+.btn,
+.accept-btn,
+.checkout-btn,
+.status-btn,
+.filter-btn,
+.tab-btn,
+.category-chip {
+    cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* الحد الأدنى لحجم الأزرار على الأجهزة اللمسية */
+@media (pointer: coarse) {
+    button,
+    a.btn,
+    .mini-btn,
+    .action-btn,
+    .header-btn {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    /* تأثير الضغط */
+    button:active,
+    a:active,
+    .clickable:active,
+    .mini-btn:active,
+    .action-btn:active {
+        transform: scale(0.97);
+        transition: transform 0.1s;
+    }
+}
+
+/* ================================================================
+ * 4. حقول الإدخال - منع Zoom على iOS
+ * ================================================================ */
+
+input,
+textarea,
+select,
+.form-control {
+    font-size: 16px !important;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 12px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/* إزالة زر البحث الافتراضي على iOS */
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+/* إزالة أزرار الأرقام على iOS */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+/* زر إظهار/إخفاء كلمة السر على Edge */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+    display: none;
+}
+
+/* ================================================================
+ * 5. التمرير السلس
+ * ================================================================ */
+
+.scrollable,
+.cart-items,
+.cart-footer-content,
+.drivers-list,
+.modal-content,
+.orders-list,
+.products-grid,
+.sidebar {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+}
+
+/* ================================================================
+ * 6. Scrollbar مخصص (Windows + Android + Chrome)
+ * ================================================================ */
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #2C5F2D, #6A7F3A);
+    border-radius: 4px;
+    transition: all 0.3s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #2C5F2D;
+}
+
+::-webkit-scrollbar-corner {
+    background: #f0f0f0;
+}
+
+body.dark-mode ::-webkit-scrollbar-track {
+    background: #1e1e2e;
+}
+
+body.dark-mode ::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #D4AF37, #F4D03F);
+}
+
+/* Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #2C5F2D #f0f0f0;
+}
+
+body.dark-mode * {
+    scrollbar-color: #D4AF37 #1e1e2e;
+}
+
+/* ================================================================
+ * 7. إصلاحات خاصة بـ iPhone (iOS)
+ * ================================================================ */
+
+@supports (-webkit-touch-callout: none) {
+    /* إصلاح 100vh على iOS */
+    .full-height,
+    .fullscreen {
+        height: -webkit-fill-available;
+    }
+    
+    /* إصلاح Sidebar */
+    .cart-sidebar,
+    .sidebar,
+    .modal-content {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+    }
+    
+    /* إصلاح sticky header */
+    .header,
+    .main-header,
+    .admin-header,
+    .store-header,
+    .driver-header {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+    }
+    
+    /* منع التمرير الأفقي */
+    body {
+        position: relative;
+        width: 100%;
+        overflow-x: hidden;
+    }
+    
+    /* إصلاح focus على input */
+    input:focus,
+    textarea:focus,
+    select:focus {
+        font-size: 16px !important;
+    }
+}
+
+/* ================================================================
+ * 8. إصلاحات خاصة بـ Android
+ * ================================================================ */
+
+@media screen and (max-width: 480px) {
+    /* منع التمرير الأفقي */
+    html,
+    body {
+        overflow-x: hidden;
+        width: 100%;
+    }
+    
+    /* منع Scroll Penetration */
+    body {
+        padding-bottom: env(safe-area-inset-bottom, 0);
+    }
+}
+
+/* ================================================================
+ * 9. إصلاحات خاصة بـ Windows
+ * ================================================================ */
+
+/* شاشات كبيرة */
+@media screen and (min-width: 1600px) {
+    body {
+        font-size: 15px;
+    }
+    
+    .main-content,
+    .main-content-wrapper,
+    .container {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (min-width: 1920px) {
+    .main-content,
+    .main-content-wrapper,
+    .container {
+        max-width: 1600px;
+    }
+}
+
+/* Windows Touch Devices */
+@media (hover: none) and (pointer: coarse) {
+    /* تعطيل hover effects */
+    .header-btn:hover,
+    .action-card:hover,
+    .mini-btn:hover,
+    .btn:hover {
+        transform: none !important;
+    }
+    
+    /* تفعيل active بدلاً من hover */
+    .header-btn:active,
+    .action-card:active,
+    .mini-btn:active,
+    .btn:active {
+        transform: scale(0.95) !important;
+    }
+}
+
+/* ================================================================
+ * 10. Landscape Mode - الجوالات
+ * ================================================================ */
+
+@media (max-height: 500px) and (orientation: landscape) {
+    /* تقليل Padding */
+    .hero,
+    .hero-section {
+        padding: 20px 15px !important;
+    }
+    
+    /* تصغير الأيقونات */
+    .hero-icon,
+    .logo-icon {
+        width: 50px !important;
+        height: 50px !important;
+        font-size: 24px !important;
+        margin-bottom: 10px !important;
+    }
+    
+    /* تصغير العناوين */
+    .hero h1,
+    .hero-section h1 {
+        font-size: 22px !important;
+        margin-bottom: 8px !important;
+    }
+    
+    .hero p,
+    .hero-section p {
+        font-size: 13px !important;
+        margin-bottom: 15px !important;
+    }
+    
+    /* الهيدر */
+    .header,
+    .main-header,
+    .admin-header,
+    .store-header,
+    .driver-header {
+        padding: 8px 15px !important;
+    }
+}
+
+/* ================================================================
+ * 11. الأجهزة اللوحية (Tablets)
+ * ================================================================ */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .main-content {
+        padding: 30px 40px;
+    }
+    
+    .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    }
+    
+    /* تكبير الأزرار */
+    .mini-btn,
+    .action-btn {
+        padding: 12px 20px;
+    }
+}
+
+/* ================================================================
+ * 12. الشاشات العالية الدقة (Retina)
+ * ================================================================ */
+
+@media (-webkit-min-device-pixel-ratio: 2),
+       (min-resolution: 192dpi) {
+    body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
+
+/* ================================================================
+ * 13. Dark Mode System Preference
+ * ================================================================ */
+
+@media (prefers-color-scheme: dark) {
+    /* يمكن تفعيل الوضع الليلي تلقائياً */
+    /* body:not(.light-forced) {
+        background: #0f0f1e;
+        color: white;
+    } */
+}
+
+/* ================================================================
+ * 14. Reduced Motion
+ * ================================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ================================================================
+ * 15. إصلاحات عامة
+ * ================================================================ */
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    -webkit-user-drag: none;
+    user-drag: none;
+}
+
+/* منع تحديد الصور */
+img,
+video {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+/* Ellipsis */
+.ellipsis,
+.text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* GPU Acceleration للعناصر المتحركة */
+.gpu-accelerated,
+.modal,
+.cart-sidebar,
+.sidebar {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+/* Scroll Lock عند فتح Modal */
+body.modal-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    top: var(--scroll-position, 0);
+}
+
+/* ================================================================
+ * 16. دعم RTL بشكل صحيح
+ * ================================================================ */
+
+[dir="rtl"] {
+    text-align: right;
+}
+
+[dir="rtl"] input:not([dir="ltr"]),
+[dir="rtl"] textarea:not([dir="ltr"]) {
+    text-align: right;
+}
+
+/* الأرقام في RTL */
+[dir="rtl"] .number,
+[dir="rtl"] .ltr {
+    direction: ltr;
+    display: inline-block;
+    unicode-bidi: embed;
+}
+
+/* ================================================================
+ * 17. Print Styles
+ * ================================================================ */
+
+@media print {
+    .header,
+    .main-header,
+    .admin-header,
+    .store-header,
+    .driver-header,
+    .header-actions,
+    .bottom-nav,
+    .cart-btn,
+    .fab,
+    .floating-btn,
+    .no-print {
+        display: none !important;
+    }
+    
+    body {
+        background: white !important;
+        color: black !important;
+    }
+    
+    a {
+        text-decoration: none;
+        color: black;
+    }
+}
+
+/* ================================================================
+ * 18. دعم الأجهزة القابلة للطي
+ * ================================================================ */
+
+@media (max-width: 320px) {
+    body {
+        font-size: 12px;
+    }
+    
+    .header h1 {
+        font-size: 14px !important;
+    }
+    
+    .logo-icon {
+        width: 40px !important;
+        height: 40px !important;
+        font-size: 20px !important;
+    }
+}
+
+/* Samsung Galaxy Fold */
+@media (max-width: 280px) {
+    body {
+        font-size: 11px;
+    }
+    
+    .main-content {
+        padding: 8px !important;
+    }
+}
+
+/* ================================================================
+ * 19. تحسينات الأداء
+ * ================================================================ */
+
+/* تحسين الرسم */
+.will-change-transform {
+    will-change: transform;
+}
+
+.will-change-opacity {
+    will-change: opacity;
+}
+
+/* تحسين التحميل */
+.lazy-load {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 200px;
+}
+
+/* ================================================================
+ * 20. أنماط مساعدة
+ * ================================================================ */
+
+.no-select {
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.text-select {
+    -webkit-user-select: text;
+    user-select: text;
+}
+
+.no-tap-highlight {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* تصحيح مشاكل الأزرار */
+button {
+    font-family: inherit;
+    outline: none;
+    border: none;
+}
+
+button:focus-visible {
+    outline: 2px solid #D4AF37;
+    outline-offset: 2px;
+}
+
+/* تصحيح مشاكل الروابط */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:focus-visible {
+    outline: 2px solid #D4AF37;
+    outline-offset: 2px;
+}
+
+/* تصحيح مشاكل الصور */
+.image-cover {
+    object-fit: cover;
+}
+
+.image-contain {
+    object-fit: contain;
+}
+
+/* ================================================================
+ * 21. دعم أفضل للـ Touch على Windows
+ * ================================================================ */
+
+@media (pointer: fine) {
+    /* أجهزة الماوس */
+    .hover-lift:hover {
+        transform: translateY(-3px);
+    }
+}
+
+@media (pointer: coarse) {
+    /* أجهزة اللمس */
+    .hover-lift:hover {
+        transform: none;
+    }
+    
+    .hover-lift:active {
+        transform: translateY(-2px);
+    }
+}
+
+/* ================================================================
+ * 22. إصلاح مشكلة Viewport Height على الجوالات
+ * ================================================================ */
+
+.vh-100 {
+    height: 100vh;
+    height: 100dvh;
+}
+
+.min-vh-100 {
+    min-height: 100vh;
+    min-height: 100dvh;
+}
+
+/* ================================================================
+ * 23. دعم Notch للعناصر الثابتة
+ * ================================================================ */
+
+@supports (padding: max(0px)) {
+    .fixed-top {
+        padding-top: max(12px, env(safe-area-inset-top, 0));
+    }
+    
+    .fixed-bottom {
+        padding-bottom: max(12px, env(safe-area-inset-bottom, 0));
+    }
+    
+    .fixed-left {
+        padding-left: max(12px, env(safe-area-inset-left, 0));
+    }
+    
+    .fixed-right {
+        padding-right: max(12px, env(safe-area-inset-right, 0));
+    }
+}
+
+/* ================================================================
+ * 24. دعم أفضل للـ Dark Mode
+ * ================================================================ */
+
+body.dark-mode img {
+    opacity: 0.9;
+}
+
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+    color-scheme: dark;
+}
+
+/* ================================================================
+ * 25. نهاية الملف
+ * ================================================================ */
